@@ -8,18 +8,19 @@ This series exists to help teams adopt AI coding assistants thoughtfully and eff
 
 ## Quick Start (Skill Lab)
 
-1. Fork this repository to your own GitHub account.
-2. After the fork finishes, open the Actions tab in your fork - a GitHub Actions workflow should start automatically.
-3. When the workflow completes, a GitHub Issue will be created in your fork to guide the next steps of the lab.
+1. Click **Use this template**.
+2. Select **Create a new repository**.
+3. Once created, open the Actions tab in your new repository - a GitHub Actions workflow should start automatically.
+4. When the workflow completes, a GitHub Issue will be created in your new repository to guide the next steps of the lab.
 
 That's it. The lab automation (workflow + seeded issue) is the only thing you need to verify to begin.
 
 ## If Something Doesn't Happen
 
-If you do NOT see a workflow run within ~30 seconds of forking:
+If you do NOT see a workflow run within ~30 seconds creating the new repository:
 
 - Refresh the Actions tab once
-- Ensure Actions are enabled for your fork (Repository Settings > Actions)
+- Ensure Actions are enabled for your new repository (Repository Settings > Actions)
 - Manually trigger any visible workflow if it shows a "Run workflow" button
 
 If the expected Issue wasn't created after the workflow succeeds:
@@ -44,4 +45,4 @@ Once the Issue appears, follow its guidance to work through the exercise using C
 
 ---
 
-> 🎉 Happy hacking – fork, watch the workflow, find the Issue, and dive in with Copilot.
+> 🎉 Happy hacking – use template, watch the workflow, find the Issue, and dive in with Copilot.
