@@ -93,9 +93,9 @@ jobs:
               - description: "The file 'epics-and-stories.md' should exist under `docs/` folder."
                 passed: ${{ steps.check_epics_and_stories.outcome == 'success' }}
                 error_message: "The file 'docs/epics-and-stories.md' was not found."
-              - description: "The file '.github/epics-and-stories.md' should contain sections for Epics, Stories, Acceptance Criteria, and Technical Requirements."
+              - description: "The file 'docs/epics-and-stories.md' should contain sections for Epics, Stories, Acceptance Criteria, and Technical Requirements."
                 passed: ${{ steps.check_epics_and_stories_md.outcome == 'success' }}
-                error_message: "The file '.github/epics-and-stories.md' does not contain all required sections."
+                error_message: "The file 'docs/epics-and-stories.md' does not contain all required sections."
 
       - name: Create comment - step results
         run: |

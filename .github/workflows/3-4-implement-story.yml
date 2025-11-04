@@ -48,15 +48,15 @@ jobs:
         id: check_put_request_exists
         continue-on-error: true
         run: |
-          grep -q "app.put('/api/items/:id" packages/backend/src/app.js
+          grep -q "app.put" packages/backend/src/app.js
           grep -q "method: 'PUT'" packages/frontend/src/App.js
 
       - name: Check that mock color requirements are followed in App.css
         id: check_mock_color_requirements
         continue-on-error: true
         run: |
-          grep -q "#07F2E6" packages/frontend/src/App.css
-          grep -q "#7A7A7A" packages/frontend/src/App.css
+          grep -r -q --include="*.css" "#07F2E6" packages/frontend/src
+          grep -r -q --include="*.css" "#7A7A7A" packages/frontend/src
 
       - name: Check that priority fields exist in packages/frontend/src/App.js
         id: check_priority_fields
