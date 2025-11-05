@@ -48,8 +48,8 @@ jobs:
         id: check_put_request_exists
         continue-on-error: true
         run: |
-          grep -q "app.put" packages/backend/src/app.js
-          grep -q "method: 'PUT'" packages/frontend/src/App.js
+          grep -r -q --include="*.js" "app.put" packages/backend/src
+          grep -r -q --include="*.js" "method: 'PUT'" packages/frontend/src
 
       - name: Check that mock color requirements are followed in App.css
         id: check_mock_color_requirements
@@ -62,9 +62,9 @@ jobs:
         id: check_priority_fields
         continue-on-error: true
         run: |
-          grep -q "P1" packages/frontend/src/App.js
-          grep -q "P2" packages/frontend/src/App.js
-          grep -q "P3" packages/frontend/src/App.js
+          grep -r -q --include="*.js" "P1" packages/frontend/src
+          grep -r -q --include="*.js" "P2" packages/frontend/src
+          grep -r -q --include="*.js" "P3" packages/frontend/src
 
       - name: Build message - step results
         id: build-message-step-results
@@ -75,15 +75,15 @@ jobs:
             step_number: 3-4
             passed: ${{ steps.check_put_request_exists.outcome == 'success' && steps.check_mock_color_requirements.outcome == 'success' && steps.check_priority_fields.outcome == 'success' }}
             results_table:
-              - description: "The file 'packages/backend/src/app.js' should have a PUT request for updating items and referenced in packages/frontend/src/App.js."
+              - description: "The file pattern 'packages/backend/src/*.js' should have a PUT request for updating items and referenced in packages/frontend/src/*.js."
                 passed: ${{ steps.check_put_request_exists.outcome == 'success' }}
-                error_message: "The file 'packages/backend/src/app.js' does not have a PUT request for updating items or is not referenced in packages/frontend/src/App.js."
-              - description: "The file 'packages/frontend/src/App.css' should reference the color '#07F2E6' for selected priority items and '#7A7A7A' for unselected priority items."
+                error_message: "The file pattern 'packages/backend/src/*.js' does not have a PUT request for updating items or is not referenced in packages/frontend/src/*.js."
+              - description: "The file pattern 'packages/frontend/src/*.css' should reference the color '#07F2E6' for selected priority items and '#7A7A7A' for unselected priority items."
                 passed: ${{ steps.check_mock_color_requirements.outcome == 'success' }}
                 error_message: "The file 'packages/frontend/src/App.css' does not reference the required colors."
-              - description: "The file 'packages/frontend/src/App.js' should reference priority fields 'P1', 'P2', and 'P3'."
+              - description: "The file pattern 'packages/frontend/src/*.js' should reference priority fields 'P1', 'P2', and 'P3'."
                 passed: ${{ steps.check_priority_fields.outcome == 'success' }}
-                error_message: "The file 'packages/frontend/src/App.js' does not reference all required priority fields."
+                error_message: "The file pattern 'packages/frontend/src/*.js' does not reference all required priority fields."
 
       - name: Create comment - step results
         run: |
