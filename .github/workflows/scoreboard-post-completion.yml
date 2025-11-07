@@ -1,6 +1,8 @@
+
 name: POST /api/completion for Scoreboard via OIDC
 
 on:
+  workflow_call:
   workflow_dispatch:
 
 jobs:
